@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%-include('components/head')%>
+		<link rel="stylesheet" href="/public/style/login_register.css" />
+		<title>Breddit | Register</title>
+	</head>
+
+	<body>
+		<%-include('components/navbar')%>
+		<form action="#" method="post" class="panel" id="panel">
+			<div class="flexLayout verticalLayout inputArea">
+				<label for="username">Username: <div id="username-feedback"></div></label>
+				<input required type="text" name="username" id="username" placeholder="Username" />
+			</div>
+			<div class="flexLayout verticalLayout inputArea">
+				<label for="password">Password:</label>
+				<input required type="password" name="password" id="password" placeholder="Password" />
+			</div>
+			<input type="submit" value="Login" id="submit" />
+			<!-- make this login button a form submit with post to the login page -->
+			<p class="info">Not yet <a href="/register">registered</a>? Do it now</p>
+		</form>
+	</body>
+	<script>
+		const form = document.getElementById('panel');
+		const submit = document.getElementById('submit');
+		const username = document.getElementById('username');
+		const feedback = document.getElementById('username-feedback');
+
+		username.addEventListener('input', (event) => {
+			const inputValue = username.value.trim();
+			if (inputValue) {
+				fetch('/api/user/exists/' + inputValue)
+					.then((res) => res.json())
+					.then((data) => {
+						console.table(data);
+						if (data.available) {
+							submit.setAttribute('disabled', 'true');
+							feedback.textContent = 'Username does not Exist';
+							feedback.className = 'unavailable';
+						} else {
+							submit.removeAttribute('disabled');
+							feedback.textContent = '';
+							feedback.className = 'available';
+						}
+					})
+					.catch((error) => {
+						console.error('Error:', error);
+					});
+			} else {
+				submit.setAttribute('disabled', 'true');
+				feedback.textContent = '';
+				feedback.className = '';
+			}
+		});
+	</script>
+</html>

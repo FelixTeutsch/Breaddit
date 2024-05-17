@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<%-include('../components/head')%>
+		<link rel="stylesheet" href="/public/style/user.css" />
+		<link rel="stylesheet" href="/public/style/post.css" />
+		<title>Breddit | User</title>
+	</head>
+
+	<body>
+
+		<%-include('../components/navbar')%>
+		<% if(user.username===reqUser.username || reqUser.privilege === 'admin') { %>
+		<a href="/users/<%= user.username %>/edit" class="editUser"><span class="material-symbols-rounded">edit</span></a>
+		<% } %>
+		<main>
+			<div class="user_profile_personal_image_area"
+					style="background-image: url('/public/user/<%= user.username %>_banner.jpg')">
+				<div class="user_profile_image_area">
+					<img src="/public/user/<%= user.username %>_profile.jpg" alt="User Profile Picture" />
+				</div>
+			</div>
+			<div class="user_profile_content verticalLayout">
+				<div class="user_profile_content_info verticalLayout">
+					<div class="post_list verticalLayout">
+						<% if(posts.length === 0) {%>This user does not have any posts yet...<%} %>
+						<% for(let i=0; i<posts.length; i++) { %>
+						<%-include('../components/post', {posts: posts[i], reqUser})%>
+						<% } %>
+					</div>
+				</div>
+				<div class="user_profile_content_overview verticalLayout">
+					<h1 class="user_card_info_username">
+
+						<%= user.username %>
+					</h1>
+					<% if(reqUser.privilege === 'admin') { %>
+					<h2 class="user_card_info_first_and_surname">
+						<%= user.firstname %>
+						<%= user.surname %>
+					</h2>
+					<% } %>
+					<h3 class="user_card_info_description">
+
+						<%= user.status %>
+					</h3>
+					<% if(user.username !==reqUser.username) { %>
+					<% if(isFollowing) { %>
+					<a href="/users/<%= user.username %>/unfollow" class="follow_unfollow_button">Unfollow</a>
+					<% } else { %>
+					<a href="/users/<%= user.username %>/follow" class="follow_unfollow_button">Follow</a>
+					<% } %>
+					<% } %>
+
+					<div class="user_follower flexLayout verticalLayout">
+						<h2>Followers</h2>
+						<div class="user_follower_area flexLayout horizontalLayout">
+							<% if(follower.length> 0) { for(let i = 0; i<follower.length; i++) { %>
+							<a href="/users/<%= follower[i].follower %>/">
+								<img src="/public/user/<%= follower[i].follower %>_profile.jpg"
+										alt="<%= follower[i].follower %> Profile Picture" />
+							</a>
+							<% }} %>
+						</div>
+					</div>
+					<div class="user_following flexLayout verticalLayout">
+						<h2>Following</h2>
+						<div class="user_following_area flexLayout horizontalLayout">
+							<% if(following.length> 0) { for(let i = 0; i<following.length; i++) { %>
+							<a href="/users/<%= following[i].following %>/">
+								<img src="/public/user/<%= following[i].following %>_profile.jpg"
+										alt="<%= following[i].following %> Profile Picture" />
+							</a>
+							<% }} %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</body>
+
+	<script src="/public/javascript/like_post.js"></script>
+
+</html>

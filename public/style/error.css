@@ -1,0 +1,55 @@
+main {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	/* max-height: calc(100vh - 88px);
+	min-height: calc(100vh - 88px); */
+	max-height: 100%;
+	min-height: 100%;
+	padding-top: 64px;
+	overflow: hidden;
+	flex-direction: column;
+	gap: 64px;
+	color: var(--red);
+}
+main * {
+	color: var(--red);
+}
+main svg {
+	max-height: 50vh;
+	width: auto;
+	transform-origin: 40% 70%;
+}
+main svg:hover {
+	animation: defuq_is_going_on 4s infinite linear;
+}
+main a {
+	text-decoration: none;
+	transition: all ease-in-out var(--timeSlow);
+	padding: 12px 24px;
+	border: var(--red) solid 2px;
+	border-radius: var(--borderRadius);
+	background-color: var(--red);
+	color: var(--pink);
+	font-size: 32px;
+}
+main a:hover {
+	transition: all ease-in-out var(--timeSlow);
+	color: var(--red);
+	cursor: pointer;
+	background-color: transparent;
+}
+
+@keyframes defuq_is_going_on {
+	0% {
+		transform: rotateZ(0deg) scale(1);
+	}
+	50% {
+		transform: rotate(180deg) scale(0.6);
+	}
+	100% {
+		transform: rotateZ(360deg) scale(1);
+	}
+}

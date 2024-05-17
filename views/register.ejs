@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%-include('components/head')%>
+		<link rel="stylesheet" href="/public/style/login_register.css" />
+		<title>Breddit | Register</title>
+	</head>
+
+	<body>
+		<%-include('components/navbar')%>
+		<form action="#" name="form" method="post" class="panel" id="panel">
+			<div class="flexLayout verticalLayout inputArea">
+				<label for="username">Username / Nickname: <div id="username-feedback"></div></label>
+				<input type="text" name="username" id="username" placeholder="Username" />
+			</div>
+			<div class="flexLayout verticalLayout inputArea">
+				<label for="firstname">Firstname:</label>
+				<input type="text" name="firstname" id="firstname" placeholder="Firstname" />
+			</div>
+			<div class="flexLayout verticalLayout inputArea">
+				<label for="surname">Surname:</label>
+				<input type="text" name="surname" id="surname" placeholder="Surname" />
+			</div>
+			<div class="flexLayout verticalLayout inputArea">
+				<label for="status">Status:</label>
+				<input type="text" name="status" id="status" placeholder="Status" />
+			</div>
+			<div class="flexLayout verticalLayout inputArea">
+				<label for="password">Password:</label>
+				<input type="password" name="password" id="password" placeholder="Password" />
+			</div>
+			<input type="submit" id="submit" value="Register" disabled />
+			<!-- make this login button a form submit with post to the login page -->
+			<p class="info">Already registered? <a href="/login">Login</a> instead</p>
+		</form>
+	</body>
+	<script>
+		const form = document.getElementById('panel');
+		const submit = document.getElementById('submit');
+		const username = document.getElementById('username');
+		const feedback = document.getElementById('username-feedback');
+
+		username.addEventListener('input', (event) => {
+			const inputValue = username.value.trim();
+			if (inputValue) {
+				fetch('/api/user/exists/' + inputValue)
+					.then((res) => res.json())
+					.then((data) => {
+						if (data.available) {
+							submit.removeAttribute('disabled');
+							feedback.textContent = '';
+							feedback.className = 'available';
+						} else {
+							submit.setAttribute('disabled', 'true');
+							feedback.textContent = 'Username already taken';
+							feedback.className = 'unavailable';
+						}
+					})
+					.catch((error) => {
+						console.error('Error:', error);
+					});
+			} else {
+				submit.setAttribute('disabled', 'true');
+				feedback.textContent = '';
+				feedback.className = '';
+			}
+		});
+	</script>
+</html>

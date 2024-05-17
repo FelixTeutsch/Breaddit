@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<%-include('components/head')%>
+		<link rel="stylesheet" href="/public/style/upload.css" />
+		<title>Breddit | Image Upload</title>
+	</head>
+
+	<body>
+		<%-include('components/navbar')%>
+		<h1>Image Upload</h1>
+
+		<form action="#" method="post" class="panel" id="panel" enctype="multipart/form-data">
+			<input type="file" name="post" required accept="image/*" />
+			<input type="description" , name="description" , id="description" placeholder="Description" />
+			<input type="submit" value="Upload" />
+		</form>
+	</body>
+
+</html>

@@ -1,0 +1,15 @@
+main {
+	max-height: 100%;
+	width: 100%;
+	overflow-y: auto;
+	justify-content: center;
+	align-items: center;
+}
+
+.feed {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 32px;
+	gap: 32px;
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<%-include('components/head')%>
+		<link rel="stylesheet" href="/public/style/feed.css" />
+		<link rel="stylesheet" href="/public/style/post.css" />
+		<title>Breddit | Feed</title>
+	</head>
+
+	<body>
+		<%-include('components/navbar')%>
+
+		<main class="">
+			<div class="feed flexLayout verticalLayout">
+				<% if(feed.length<1) { %>
+				<h1>Follow some <a href="/users/">users</a>, to see their posts in your feed</h1>
+				<% }for(let i=0; i<feed.length; i++) { %> <%-include('components/post', {posts: feed[i], reqUser})%> <% } %>
+			</div>
+		</main>
+	</body>
+	<script src="/public/javascript/like_post.js"></script>
+
+</html>

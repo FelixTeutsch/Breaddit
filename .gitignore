@@ -1,0 +1,17 @@
+.idea
+.env
+.vscode
+node_modules/
+
+#Ignore everything in logs
+logs/*
+
+#Ignore all uploaded Images for storage reasons
+post/*
+!/post/no_access.jpg
+!/post/unavailable.jpg
+
+#Ignore all user Profiles except default
+public/user/*
+!public/user/guest_banner.svg
+!public/user/guest_profile.svg

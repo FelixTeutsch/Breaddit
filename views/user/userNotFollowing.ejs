@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<%-include('../components/head')%>
+		<link rel="stylesheet" href="/public/style/user.css" />
+		<link rel="stylesheet" href="/public/style/post.css" />
+		<title>Breddit | User</title>
+	</head>
+
+	<body>
+		<%-include('../components/navbar')%>
+
+		<main>
+			<div class="user_profile_personal_image_area"
+					style="background-image: url('/public/user/<%= user.username %>_banner.jpg')">
+				<div class="user_profile_image_area">
+					<img src="/public/user/<%= user.username %>_profile.jpg" alt="User Profile Picture" />
+				</div>
+			</div>
+			<div class="user_profile_content verticalLayout">
+				<div class="user_profile_content_info verticalLayout">
+					<div class="post_list verticalLayout">
+						<h1>FOLLOW THIS USER TO SEE THEIR POSTS</h1>
+					</div>
+				</div>
+				<div class="user_profile_content_overview verticalLayout">
+					<h1 class="user_card_info_username"> <%= user.firstname %> <%= user.surname %> </h1>
+					<h2 class="user_card_info_description"> <%= user.status %> </h2>
+					<% if(user.username !== reqUser.username) { %>
+					<a href="/users/<%= user.username %>/follow" class="follow_unfollow_button">Follow</a>
+					<% } %>
+				</div>
+			</div>
+		</main>
+	</body>
+
+</html>

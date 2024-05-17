@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<%-include('../components/head')%>
+		<link rel="stylesheet" href="/public/style/edit_picture.css" />
+		<link rel="stylesheet" href="/public/style/edit_user.css" />
+		<link rel="stylesheet" href="/public/style/create_post.css" />
+		<title>Breddit | Edit Profile</title>
+	</head>
+
+	<body>
+		<%-include('../components/navbar')%>
+		<form action="#" method="post" class="edit_form" id="edit_form" enctype="multipart/form-data">
+			<h1>Change Picture</h1>
+			<div class="img_and_input">
+				<div class="flexLayout verticalLayout inputArea">
+					<label for="profile" id="lable_profile"> Profile Picture </label>
+					<input type="file" id="profile-picture-input" class="input_field_element" maxlength="100" minlength="0"
+							min="0" max="100" name="profile" placeholder="Profile Picture" id="profile" accept=".png, .jpg,.jpeg" />
+				</div>
+				<img src="/public/user/<%= user.username %>_profile.jpg" alt="Profile Picture" id="profile_picture" />
+			</div>
+			<div class="img_and_input">
+				<div class="flexLayout verticalLayout inputArea">
+					<label for="banner" id="lable_banner"> Banner </label>
+					<input type="file" id="banner-picture-input" class="input_field_element" maxlength="100" minlength="0" min="0"
+							max="100" name="banner" placeholder="Banner" id="banner" accept=".png, .jpg,.jpeg" />
+				</div>
+				<img src="/public/user/<%= user.username %>_banner.jpg" alt="Profile Picture" id="banner_picture" />
+			</div>
+
+			<input type="submit" value="Change Picture" />
+		</form>
+	</body>
+	<script src="/public/javascript/update_image.js"></script>
+
+</html>

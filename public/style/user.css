@@ -1,0 +1,208 @@
+header {
+	height: 100px;
+	width: 100%;
+	background-color: var(--light);
+	box-shadow: var(--dark25) 0px 2px 4px;
+	position: fixed;
+	z-index: 999;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	padding: 0 64px;
+	/* border-radius: var(--borderRadius) var(--borderRadius) 0 0; */
+}
+
+header a {
+	text-decoration: none;
+	font-size: 32px;
+	transition: all ease-in-out var(--timeSlow);
+	text-align: center;
+}
+header a:hover {
+	border-radius: 100%;
+	color: var(--pink);
+}
+
+main {
+	height: 100%;
+	width: 100%;
+}
+.user_profile_personal_image_area {
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	align-items: end;
+	justify-content: end;
+	background-color: var(--light);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: calc(100vh - 250px);
+	box-shadow: inset rgba(0, 0, 0, 0.5) 0px 4px 8px;
+}
+
+.user_profile_personal_image_area .user_profile_image_area {
+	max-width: 250px;
+	width: 250px;
+	max-height: 250px;
+	height: 250px;
+	background-color: var(--light);
+	margin-right: 64px;
+	border-radius: calc(250px / 2);
+	transform: translateY(50%);
+	box-shadow: var(--dark25) 4px 4px 16px;
+	overflow: hidden;
+}
+
+.user_profile_personal_image_area img {
+	max-width: 250px;
+	width: 250px;
+	max-height: 250px;
+	height: 250px;
+	object-fit: cover;
+}
+
+.user_profile_content {
+	padding: 64px 128px;
+
+	flex-direction: row;
+	height: 100%;
+	overflow-y: auto;
+	gap: 64px;
+}
+.user_profile_content * {
+	color: var(--pink);
+}
+
+.user_profile_content_info,
+.user_profile_content_overview {
+	padding: 32px 64px;
+	background-color: var(--dark25);
+	border-radius: var(--borderRadius);
+	box-shadow: var(--dark25) 2px 2px 4px;
+}
+.user_profile_content_info {
+	width: 60vw;
+	align-items: center;
+	max-height: 800px;
+}
+.post_list {
+	max-height: 800px;
+	overflow: auto;
+	gap: 32px;
+	/* border: solid 4px var(--pink); */
+	padding: 24px;
+	background-color: var(--pink);
+	border-radius: var(--borderRadius);
+	color: var(--dark);
+	box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.5);
+}
+.post_list h1 {
+	color: var(--dark);
+}
+.post_list::-webkit-scrollbar {
+	display: none;
+}
+.user_profile_content_overview {
+	flex-grow: 1;
+	max-width: 500px;
+	max-height: 800px;
+}
+
+/**********************************/
+/*************Follower*************/
+/**********************************/
+.user_follower,
+.user_following {
+	width: 100%;
+	margin: 24px 0;
+}
+
+.user_follower .user_follower_area,
+.user_following .user_following_area {
+	flex-wrap: wrap;
+	padding: 8px;
+	gap: 8px;
+	border: solid 2px var(--pink);
+	border-radius: var(--borderRadius);
+	max-height: 250px;
+	overflow: auto;
+	min-height: 80px;
+	min-width: 100%;
+}
+
+.user_follower .user_follower_area a,
+.user_following .user_following_area a {
+	width: 64px;
+	height: 64px;
+	overflow: hidden;
+	border-radius: 32px;
+	transition: all ease-in-out var(--timeSlow);
+}
+
+.user_follower .user_follower_area a:hover,
+.user_following .user_following_area a:hover {
+	transform: scale(1.05);
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.user_follower .user_follower_area a img,
+.user_following .user_following_area a img {
+	max-width: 64px;
+	width: 64px;
+	max-height: 64px;
+	height: 64px;
+	object-fit: cover;
+}
+.editUser {
+	transition: all ease-in-out var(--timeSlow);
+	position: fixed;
+	bottom: 2rem;
+	left: 2rem;
+	width: 4rem;
+	height: 4rem;
+	border-radius: 2rem;
+	background-color: var(--dark);
+	border: solid 2px var(--dark);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	text-decoration: none;
+}
+.editUser * {
+	transition: all ease-in-out var(--timeSlow);
+	color: var(--pink);
+	font-size: 2rem;
+	cursor: pointer;
+}
+.editUser:hover * {
+	color: var(--dark);
+}
+.editUser:hover {
+	background-color: transparent;
+}
+
+.follow_unfollow_button {
+	margin: 1rem;
+	align-self: center;
+	transition: all ease-in-out var(--timeSlow);
+	text-decoration: none;
+	padding: 0.5rem 2rem;
+	background-color: var(--pink);
+	width: fit-content;
+	color: var(--dark);
+	font-size: 1.5rem;
+	border: solid 2px var(--pink);
+	border-radius: 0.5rem;
+}
+.follow_unfollow_button:hover {
+	color: var(--pink);
+	background-color: transparent;
+}
+
+.user_card_info_first_and_surname {
+	font-size: 1.5rem;
+	font-weight: 700;
+}

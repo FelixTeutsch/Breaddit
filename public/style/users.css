@@ -1,0 +1,71 @@
+header {
+	height: 100px;
+	width: 100%;
+	background-color: var(--light);
+	box-shadow: var(--dark25) 0px 2px 4px;
+}
+main {
+	display: flex;
+	padding: 32px 128px 64px 128px;
+	flex-wrap: wrap;
+	gap: 64px;
+	/* max-width: 1284px; */
+}
+.user_card {
+	overflow: hidden;
+	border-radius: var(--borderRadius);
+	width: 300px;
+	background-color: var(--turquoise);
+	/* color: var(--dark); */
+	align-items: flex-start;
+	justify-content: start;
+	box-shadow: 0px 4px 8px var(--dark25);
+	height: 370px;
+	transition: all ease-in-out var(--timeSlow);
+}
+.user_card:hover {
+	transform: scale(1.02);
+	box-shadow: var(--dark25) 0px 4px 12px;
+	cursor: pointer;
+}
+.user_card_image_area {
+	width: 300px;
+	height: 300px;
+	object-fit: cover;
+	align-items: start;
+	text-align: center;
+	background-color: var(--light);
+}
+.user_card_info {
+	align-items: flex-start;
+	justify-content: start;
+	padding: 16px;
+	overflow-y: hidden;
+	height: 72px;
+}
+
+.user_card_info h1 {
+	font-size: 24px;
+}
+.user_card_info h2 {
+	font-size: 12px;
+	width: 100%;
+	max-width: calc(300px - 32px);
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+.user_card_link {
+	text-decoration: none;
+}
+
+.no_users_found {
+	display: flex;
+	flex-direction: column;
+	padding: 16px 0 0 16px;
+}
+
+.no_users_found h1 {
+	font-size: 32px;
+	color: var(--dark25);
+}

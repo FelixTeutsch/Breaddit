@@ -1,0 +1,31 @@
+{
+  "name": "ss2023-ssc-group_1",
+  "version": "1.0.0",
+  "description": "Felix Teutsch, Miriam Beer, Maria-Michaela Marinova",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.nwt.fhstp.ac.at/cc221036/ss2023-ssc-group_1.git"
+  },
+  "author": "Felix Teutsch, Miriam Beer, Maria-Michaela Marinova",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.0",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "uuid": "^9.0.0",
+    "ws": "^8.13.0"
+  }
+}

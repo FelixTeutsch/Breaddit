@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%-include('../components/head')%>
+		<!-- Pleas do what i tell you or i will kill this entire project and you will never see the light of day again! -->
+		<link rel="stylesheet" href="/public/style/users.css" />
+		<title>Breddid | All Users</title>
+	</head>
+
+	<body>
+		<%-include('../components/navbar')%> <% if(locals.search && search.trim) {%>
+		<div class="no_users_found">
+			<h1>You Searched for <span class="result"><%= search %></span> </h1>
+			<% if(users.length === 0) {%>
+			<h3>No users found! View <a href="/users">all Users</a> instead...</h3>
+			<%} %>
+		</div>
+		<%} %>
+		<main>
+			<% for(var i=0; i< users.length; i++) { %>
+			<a class="user_card_link" href="/users/<%= users[i].username %>">
+				<div class="user_card verticalLayout">
+					<img class="user_card_image_area" src="/public/user/<%= users[i].username %>_profile.jpg" alt="<%= users[i].username %> Profile Picture" />
+
+					<div class="user_card_info verticalLayout">
+						<h1 class="user_card_info_username"> <%= users[i].username %> </h1>
+						<h2 class="user_card_info_description"> <%= users[i].status %> </h2>
+					</div>
+				</div>
+			</a>
+			<% } %>
+		</main>
+	</body>
+</html>

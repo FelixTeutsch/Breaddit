@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<%-include('components/head')%>
+		<link rel="stylesheet" href="/public/style/create_post.css" />
+		<link rel="stylesheet" href="/public/style/login_register.css" />
+		<title>Breddit | Register</title>
+	</head>
+
+	<body>
+		<%-include('components/navbar')%>
+		<form action="#" method="post" enctype="multipart/form-data" class="panel" id="panel">
+			<h1>Create a Post</h1>
+			<img src="/public/user/guest_banner.svg" alt="Post Preview" id="post_preview" class="post_preview" />
+			<div class="flexLayout verticalLayout inputArea">
+				<label for="image">Post:</label>
+				<input required type="file" name="image" id="post" accept="image/*" aria-label="Drag and Drop your File" />
+			</div>
+			<div class="flexLayout verticalLayout inputArea">
+				<label for="caption">Caption:</label>
+				<input required type="caption" name="caption" id="caption" placeholder="Input your Caption" />
+			</div>
+			<input type="submit" value="Post this image" />
+		</form>
+	</body>
+	<script src="/public/javascript/post_preview.js"></script>
+
+</html>

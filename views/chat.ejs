@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<%- include('components/head') %>
+		<link rel="stylesheet" href="/public/style/chat.css" />
+		<title>Breddit | Chat</title>
+	</head>
+
+	<body>
+		<%- include('components/navbar') %>
+		<main>
+			<div class="contacts">
+				<div class="join_room">
+					<label for="room">Join Chat Room</label>
+					<div class="join_room_input">
+						<input id="room" placeholder="Room ID" type="text" />
+						<button onclick="joinRoom()"><span class="material-symbols-rounded">login</span></button>
+					</div>
+				</div>
+				<% if(locals.chats && locals.users) {%>
+				<div class="contacts_contact_list">
+					<div class="chat_list" id="chat_list">
+						<div class="chat_list_chats" id="chat_list_chats">
+							<% const createdChats = [] %>
+							<% for (let i = (chats.length)-1; i >= 0 ; i--) { %>
+							<% 	let chat = { 
+									chat_id: chats[i].id,
+									receiver: chats[i].user1 !== reqUser.username ? chats[i].user1:chats[i].user2,
+									message: { 
+										message: chats[i].message,
+										sender: chats[i].sender,
+										time: chats[i].last_message_timestamp
+									}
+								};
+								if(createdChats.includes(chat.receiver)) continue;
+								createdChats.push(chat.receiver);
+							%>
+							<div class="contacts_contact" onclick="openChat('<%=chat.chat_id%>','<%=chat.receiver%>')">
+								<div class="contacts_contact_image">
+									<img src="/public/user/<%=chat.receiver%>_profile.jpg" alt="" />
+								</div>
+								<div class="content">
+									<div class="content_name"><%=chat.receiver%></div>
+									<div class="content_lastMessage">
+										<% if(chat.message.message && chat.message.time) {%> <% const time = new Date(chat.message.time) %>
+										<div class="content_last_message_message"> <%=chat.message.sender%>:
+											<b><%=chat.message.message%></b>
+										</div>
+										<div class="content_last_message_time">
+											<%=time.getHours() + ":"+(time.getMinutes() < 10 ? 0 : '') +time.getMinutes()%> </div>
+										<% } %>
+									</div>
+								</div>
+							</div>
+							<% } %>
+						</div>
+
+						<div class="add_chat" onclick="openAddList('<%= reqUser.username%>')">
+							Add Chat
+							<span class="material-symbols-rounded"> add </span>
+						</div>
+					</div>
+
+					<div class="add_list" id="add_list">
+						<div class="add_list_back" onclick="closeAddList()">
+							<span class="material-symbols-rounded"> arrow_back_ios_new </span>
+							Back to all chats
+						</div>
+						<div class="add_list_content" id="add_list_content"> </div>
+					</div>
+				</div>
+				<% } %>
+			</div>
+			<div class="chat">
+				<div class="chat_info">
+					<img src="/public/user/guest_profile.jpg" alt="Chat icon" id="chat_info_image" />
+					<div class="chat_info_text"></div>
+				</div>
+				<div id="messages">
+					<div class="open_chat">
+						<h1> Open a chat to talk about bread... </h1>
+					</div>
+				</div>
+				<div class="input_area">
+					<input id="text_input" type="text" placeholder="Message..." disabled />
+					<button id="send_button" type="send" onclick="sendMyMessage()" disabled>
+						<img src="/public/image/send_icon.svg" alt="Icon for send Button" />
+					</button>
+				</div>
+			</div>
+			<input type="hidden" name="sender" class="sender" id="sender" value="<%=reqUser.username%>" />
+		</main>
+	</body>
+	<script src="/public/javascript/color_generator.js"></script>
+	<script src="/public/javascript/chat.js"></script>
+
+</html>

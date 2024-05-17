@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<%-include('../components/head')%>
+		<link rel="stylesheet" href="/public/style/edit_user.css" />
+		<title>Breddit | Edit Profile</title>
+	</head>
+
+	<body>
+		<%-include('../components/navbar')%>
+
+		<form action="#" method="post" class="edit_form" id="edit_form">
+			<h1>Edit Profile</h1>
+			<%- include('../components/input', {name: "username", type: "text",label: "Username", value: user.username, readonly: true}) %>
+			<%- include('../components/input', {name: "firstname", type: "text",label: "First Name", value: user.firstname}) %>
+			<%- include('../components/input', {name: "surname", type: "text",label: "Last Name", value: user.surname}) %>
+			<%- include('../components/input', {name: "status", type: "text",label: "Status", value: user.status}) %>
+			<%- include('../components/input', {name: "privilege", type: "text" ,label: "Privilege", value: user.privilege, readonly: true}) %>
+
+			<div class="edit_picture_area">
+				<div class="quick_links">
+					<a href="./edit/picture">Change Picture</a>
+					<a href="./edit/password">Change Password</a>
+				</div>
+				<div class="edit_picture_area_images">
+					<img src="/public/user/<%=user.username%>_banner.jpg" alt="User Profile Picture">
+					<img src="/public/user/<%=user.username%>_profile.jpg" alt="User Banner">
+				</div>
+			</div>
+			<input type="submit" value="Update Profile" />
+		</form>
+		<% if(user.privilege !== "admin") { %>
+		<% if(reqUser.username !== user.username) { %>
+		<form action="/api/user/admin/<%=user.username %>" class="request_admin_form" method="post">
+			<input type="submit" value="Make Admin">
+		</form>
+		<% } else { %>
+		<form action="/api/user/admin" class="request_admin_form" method="post">
+			<input type="submit" value="Request Admin">
+		</form>
+		<% } %>
+		<% } %>
+		<% if(reqUser.username === user.username) { %>
+		<form action="./delete" class="delete_form" method="post">
+			<input type="submit" value="Delete Account">
+		</form>
+		<% } %>
+	</body>
+
+</html>

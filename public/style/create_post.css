@@ -1,0 +1,67 @@
+/*LOTS OF CSS FOR A FILE UPLOAD*/
+#post {
+	padding-left: 0;
+}
+input[type='file']:focus {
+	/* Styling when the file upload container is in focus */
+	outline: none;
+}
+
+input[type='file']::-webkit-file-upload-button {
+	/* Styling for the file upload button (Webkit browsers) */
+	background-color: var(--red);
+	color: white;
+	border: none;
+	border-radius: var(--borderRadius);
+	padding: 10px;
+	transition: background-color var(--timeSlow);
+	cursor: pointer;
+	margin-right: 1rem;
+}
+
+input[type='file']::-webkit-file-upload-button:hover {
+	/* Styling when hovering over the file upload button (Webkit browsers) */
+	background-color: var(--red50);
+}
+
+input[type='file']::-webkit-file-upload-button:focus {
+	/* Styling when the file upload button (Webkit browsers) is in focus */
+	outline: none;
+	background-color: var(--dark);
+}
+
+input[type='file']::-moz-file-upload-button {
+	/* Styling for the file upload button (Firefox) */
+	background-color: var(--red);
+	color: white;
+	border: none;
+	border-radius: var(--borderRadius);
+	padding: 10px;
+	transition: background-color var(--timeSlow);
+	cursor: pointer;
+}
+
+input[type='file']::-moz-file-upload-button:hover {
+	/* Styling when hovering over the file upload button (Firefox) */
+	background-color: var(--red50);
+}
+
+input[type='file']::-moz-file-upload-button:focus {
+	/* Styling when the file upload button (Firefox) is in focus */
+	outline: none;
+	background-color: var(--dark);
+}
+
+/* Optional: Styling the text inside the file upload container */
+input[type='file']::placeholder {
+	color: var(--pink);
+}
+
+.post_preview {
+	width: 600px;
+	height: 600px;
+	object-fit: cover;
+	align-self: center;
+	border-radius: var(--borderRadius);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}

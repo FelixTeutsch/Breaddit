@@ -1,0 +1,28 @@
+.img_and_input {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: end;
+	width: 100%;
+	gap: 16px;
+}
+
+.img_and_input img {
+	height: 96px;
+	width: 96px;
+	object-fit: cover;
+	border-radius: 16px;
+	transition: all ease-in-out var(--timeSlow);
+	box-shadow: 0 1px 4px var(--dark25);
+	filter: saturate(50%) grayscale(25%);
+}
+.img_and_input img:hover,
+.img_and_input:focus-within img {
+	transition: all ease-in-out var(--timeSlow);
+	cursor: cursor;
+	box-shadow: 0 2px 8px var(--dark25);
+	filter: saturate(100%) grayscale(0%);
+}
+.img_and_input:nth-child(3) img {
+	width: calc(96px * 2);
+}

@@ -1,0 +1,55 @@
+body {
+  background-image: url("/public/image/landing_background.jpg");
+  justify-content: center;
+  align-items: center;
+}
+input[type="button"] {
+  cursor: pointer;
+}
+input,
+.search_area {
+  background-color: var(--pink);
+}
+
+.login_panel {
+  background-color: var(--turquoise60);
+  padding: 64px;
+  gap: 32px;
+  border-radius: var(--borderRadius);
+}
+
+.login_button_panel {
+  gap: 32px;
+}
+.login_panel input[type="text"] {
+  width: 50vw;
+}
+.search_area {
+  border-radius: var(--borderRadius);
+  width: fit-content;
+  height: fit-content;
+  overflow: hidden;
+  box-shadow: var(--dark25) 2px 2px 4px;
+}
+
+.search_area * {
+  border: none;
+  font-size: 32px;
+  padding: 16px 32px;
+}
+
+.search_area:active {
+  border: none;
+}
+.search_area *:focus,
+.search_area *[type="text"]:focus {
+  outline: none;
+}
+.login_button_panel input[type="button"] {
+  font-size: 24px;
+  padding: 16px 48px;
+  box-shadow: var(--dark25) 2px 2px 4px;
+  border: none;
+  border-radius: var(--borderRadius);
+  cursor: pointer;
+}

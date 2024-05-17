@@ -1,0 +1,8 @@
+<div class="flexLayout verticalLayout inputArea">
+	<label for="<%= name%>" id="lable_<%= name %>"> <%= label %> </label>
+	<input type="<%= type %>" invalid class="input_field_element" maxlength="<%= locals.maxLen ? maxLen : '100'%>"
+			minlength="<%= locals.minLen ? minLen : '0'%>" min="<%= locals.minLen ? minLen : '0'%>"
+			max="<%= locals.maxLen ? maxLen : '100'%>" name="<%= name %>" placeholder="<%= label %>" required
+			autocomplete="<%= locals.autocomplete ? autocomplete : "" %>" id="<%= name %>"
+			value="<%= locals.value ? value : '' %>" <%= locals.readonly ? "readonly":"" %>>
+</div>
